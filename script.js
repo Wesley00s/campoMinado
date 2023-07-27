@@ -79,7 +79,7 @@ squareArray.forEach(element => {
             element.src = "bombSquare.png";
             element.classList.add("bomb");
             element.classList.remove("squareClosed");
-            pts.loosP();
+            pts.lossP();
             explosionSound();            
             setTimeout(() => {
                 gameBody.classList.remove('shake');
