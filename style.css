@@ -41,16 +41,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
     width: 100%;
     margin: auto; 
     font-size: small;
 }
 
-.points{
+.cont{
     display: inline;
     margin: 1rem;
+    font-size: 1rem;
 }
 
 .title{

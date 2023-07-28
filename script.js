@@ -1,24 +1,33 @@
 const gameBody = document.querySelector(".gameBody");
 const pointuation = document.querySelector(".points");
+const moves = document.querySelector(".moves");
 const revealGame = document.querySelector(".revealGame");
+const contadorBombs = document.querySelector(".bombas");
 
 class Points{
     constructor(p) {
         this.p = p;
     }
     lossP = function () {
-        if (this.p > 0) {
+
+        if (this.p >= 180) {
             this.p -= 20;
+        } else {
+            this.p -= 15;
         }
     }
     winP = function () {
-        this.p += 5;
+        if (this.p <= 40) {
+            this.p += 20;
+        } else {
+            this.p += 10;
+        }
     }
 }
 
 const pts = new Points(100);
 const totalSquares = 100;
-const bombCount = 30;
+const bombCount = 40;
 
 for (let i = 0; i < 100; i++) {
     
@@ -102,10 +111,16 @@ const showMessage = (msg) => {
     revealGame.innerHTML = `<h1>${msg}</h1>`;
 };
 
+let contMoves = 0;
+let contBombs = 0;
+let gameEnd = false;
+
 squareArray.forEach(element => {
-    
     let control = true;
+    let controlMoves = true;
     element.addEventListener("click", () => {
+        if(gameEnd) return;
+        let controlBombs = true;
         if (element.classList.contains('squareClosed') && !element.classList.contains('bomb') && control) {
             element.src = "emptySquare.png";
             element.classList.add("emptyOpen");
@@ -119,6 +134,11 @@ squareArray.forEach(element => {
             element.classList.remove("squareClosed");
             explosionSound();  
             pts.lossP();
+            if (controlBombs) {
+                contBombs++;
+                contadorBombs.innerHTML = contBombs;
+                controlBombs = false;
+            } 
             setTimeout(() => {
                 gameBody.classList.remove('shake');
             }, 500);
@@ -126,19 +146,33 @@ squareArray.forEach(element => {
         control = false;
         pointuation.innerHTML = pts.p;
         
+        if (controlMoves) {
+            contMoves++;
+            moves.innerHTML = contMoves;
+            controlMoves = false;
+        }
         if (pts.p <= 0) {
             revealAllSquares();
             setTimeout(() => {
                 soundOver();
             }, 700);
             showMessage('Você perdeu!');
-            
+            gameEnd = true;
+        } else if (contMoves === 100 && pts.p < 200) {
+            revealAllSquares();
+            setTimeout(() => {
+                soundOver();
+            }, 700);
+            showMessage('Você não conseguiu completar o desafio!');
+            gameEnd = true;
         } else if (pts.p >= 200) {
             revealAllSquares();
             setTimeout(() => {
                 soundWin();
             }, 700);
             showMessage('Você ganhou!');
+            gameEnd = true;
         }
+        console.log(gameEnd);
     });
 });
