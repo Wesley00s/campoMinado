@@ -11,14 +11,18 @@
     <audio id="open" src="soundEmpty.wav"></audio>
     <audio id="gameWin" src="gameWin.wav"></audio>
     <audio id="gameOver" src="gameOver.wav"></audio>
-    <h1 class="title" id="title">CAMPO MINADO<h1>
+    <header>
+        <h1 class="title" id="title">CAMPO MINADO<h1>
+        <button id="restart"><img class="imgRestart" src="restart.png" alt=""></button>
+    </header>
         <div class="rules">
-            <p>Objetivo:_____200 pts.</p>
+            <p class="obj">Objetivo: <p class="pts">200 pts.</p></p>
             <p>Cuidado com as bombas.</p>
             <p>Perde ao chegar a zero.</p>
         </div>
 
         <div class="gameBody" id="gameBody"></div>
+        <div id="msg"></div>
         <div class="revealGame"></div>
         <div class="divPoints">
             <h2>

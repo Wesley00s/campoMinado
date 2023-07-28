@@ -8,6 +8,39 @@
     font-family: 'Bungee Spice', cursive;
 }
 
+header {
+    display: flex;
+    font-size: x-large;
+    text-align: center;
+    flex-direction: row;
+    width: 30rem;
+    margin: 2rem auto;
+}
+.title{
+    display: flex;
+    width: fit-content;
+    margin: auto;
+}
+button{
+    border-radius: 100%;
+    margin: auto;
+}
+
+.imgRestart{
+    /* box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.6); */
+    border-radius: 100%;
+    background: #000;
+    width: 2.4rem;
+}
+
+.imgRestart:hover{
+    opacity: 0.5;
+    transition: 300ms;
+    /* box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.6); */
+    cursor: pointer;
+
+}
+
 .gameBody{
     display: flex;
     flex-direction: row;
@@ -15,25 +48,43 @@
     align-items: center;
     justify-content: center;
     width: 40rem;
-    margin: 3rem auto;
+    margin: 0.9rem auto;
 
 }
 
 .shake{
-    animation: shake 0.5s;
+    animation: shake 1s;
 }
 
 @keyframes shake {
     0% { transform: translate(0, 0); }
-    10% { transform: translate(-5px, 0); }
-    20% { transform: translate(5px, 0); }
-    30% { transform: translate(-5px, 0); }
-    40% { transform: translate(5px, 0); }
-    50% { transform: translate(-5px, 0); }
-    60% { transform: translate(5px, 0); }
-    70% { transform: translate(-5px, 0); }
-    80% { transform: translate(5px, 0); }
-    90% { transform: translate(-5px, 0); }
+    10% { transform: translate(-3px, 0); }
+    20% { transform: translate(3px, 0); }
+    30% { transform: translate(-3px, 0); }
+    40% { transform: translate(3px, 0); }
+    50% { transform: translate(-3px, 0); }
+    60% { transform: translate(3px, 0); }
+    70% { transform: translate(-3px, 0); }
+    80% { transform: translate(3px, 0); }
+    90% { transform: translate(-3px, 0); }
+    100% { transform: translate(0, 0); }
+}
+
+.shakeBomb{
+    animation: shakeBomb 0.5s;
+}
+
+@keyframes shakeBomb {
+    0% { transform: translate(0, 0); }
+    10% { transform: translate(-5px, -3px); }
+    20% { transform: translate(5px, 3px); }
+    30% { transform: translate(-5px, -3px); }
+    40% { transform: translate(5px, 3px); }
+    50% { transform: translate(-5px, -3px); }
+    60% { transform: translate(5px, 3px); }
+    70% { transform: translate(-5px, -3px); }
+    80% { transform: translate(5px, 3px); }
+    90% { transform: translate(-5px, -3px); }
     100% { transform: translate(0, 0); }
 }
 
@@ -54,10 +105,7 @@
     font-size: 1rem;
 }
 
-.title{
-    font-size: xx-large;
-    text-align: center;
-}
+
 
 .square{
     margin: 2px;
@@ -82,7 +130,12 @@
     text-align: center;
 }
 
-.revealGame h1{
+#msg{
+    text-align: center;
+}
+
+#msg h1{
+    font-size: 3rem;
     animation: jump 3s infinite ease;
 }
 
@@ -113,4 +166,22 @@
     margin: auto;
     font-size: 1.3rem;
     margin-top: 2rem;
+}
+
+.pts{
+    transform: translate(8.7rem, -0.01rem);
+}
+
+.obj{
+    margin-bottom: -1.55rem;
+}
+
+.rotate{
+    animation: rotate 500ms linear;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(360deg);
+    }
 }
