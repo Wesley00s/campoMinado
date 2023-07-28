@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Campo Minado</title>
+</head>
+<body>
+    <audio id="explosion" src="soundBomb.wav"></audio>
+    <audio id="open" src="soundEmpty.wav"></audio>
+    <audio id="gameWin" src="gameWin.wav"></audio>
+    <audio id="gameOver" src="gameOver.wav"></audio>
+    <h1 class="title" id="title">CAMPO MINADO<h1>
+        <div class="rules">
+            <p>Objetivo:_____200 pts.</p>
+            <p>Acertos:_______+5 pts.</p>
+            <p>Erros:________-20 pts.</p>
+            <p>Perde ao chegar a zero.</p>
+        </div>
+
+        <div class="gameBody" id="gameBody"></div>
+        <div class="revealGame"></div>
+        <div class="divPoints">
+            <h2>
+                Pontuação:<p class="points">
+                    100
+                </p>
+            </h2>
+        </div>
+    <script src="script.js"></script>
+    <div class="copy">
+        <small>
+            &copy; Copyright 2023, all rights reserved. Developed by, @Wesley R.S</small>
+    </div>
+</body>
+</html>
