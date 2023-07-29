@@ -60,7 +60,7 @@ const initializeGame = () => {
     
     const pts = new Points(100);
     const totalSquares = 100;
-    const bombCount = 45;
+    const bombCount = 50;
     
     for (let i = 0; i < 100; i++) {
         
