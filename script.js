@@ -1,8 +1,8 @@
 const player = document.querySelector("#name");
 const btnSubmit = document.querySelector("#btnSubmit");
 
-let playerName = localStorage.getItem('player');
-player.value = playerName.trim();
+
+player.value = localStorage.getItem('player');
 
 player.addEventListener("input", (event) => {
     const inputValue = event.target.value.trim();
