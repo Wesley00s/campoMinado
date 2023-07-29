@@ -3,6 +3,17 @@ const pointuation = document.querySelector(".points");
 const moves = document.querySelector(".moves");
 const revealGame = document.querySelector(".revealGame");
 const contadorBombs = document.querySelector(".bombas");
+const player = document.querySelector(".player");
+const changeName = document.querySelector(".changeName");
+
+let playerName = localStorage.getItem("player");
+player.innerHTML = playerName;
+
+changeName.addEventListener('click', () => {
+    window.location.href = '../index.html'
+
+})
+
 
 let highest = parseInt(localStorage.getItem("highestScore")) || 0;
 let total = parseInt(localStorage.getItem("totalScore")) || 0;
@@ -153,7 +164,7 @@ const initializeGame = () => {
                 if (pts.p > 40) {
                     total += 10;
                     totalScore.innerHTML = total;
-                } else {
+                } else if (pts.p <= 40) {
                     total += 20;
                     totalScore.innerHTML = total;
                 }
@@ -185,8 +196,6 @@ const initializeGame = () => {
             totalMove.innerHTML = contAllMoves;
             addInformation(contAllMoves, 'totalMove');
 
-            
-
             control = false;
             pointuation.innerHTML = pts.p;
             
@@ -195,26 +204,34 @@ const initializeGame = () => {
                 moves.innerHTML = contMoves;
                 controlMoves = false;
             }
-            if (pts.p <= 0) {
+
+            if (contMoves <= 10 && pts.p >= 200) {
+                revealAllSquares();
+                setTimeout(() => {
+                    soundWin();
+                }, 700);
+                showMessage(`Uau! Isso é impressioante ${playerName}, você ganhou sem estourar nenhuma bomba, você tem meus parabéns!`);
+                gameEnd = true;
+            }else if (pts.p <= 0) {
                 revealAllSquares();
                 setTimeout(() => {
                     soundOver();
                 }, 700);
-                showMessage('Você perdeu!');
+                showMessage(`Não foi dessa vez ${playerName}, você perdeu!`);
                 gameEnd = true;
             } else if (contMoves === 100 && pts.p < 200) {
                 revealAllSquares();
                 setTimeout(() => {
                     soundOver();
                 }, 700);
-                showMessage('Você não conseguiu completar o desafio!');
+                showMessage(`Você não conseguiu completar o desafio, ${playerName}!`);
                 gameEnd = true;
             } else if (pts.p >= 200) {
                 revealAllSquares();
                 setTimeout(() => {
                     soundWin();
                 }, 700);
-                showMessage('Você ganhou!');
+                showMessage(`Parabéns ${playerName}, você ganhou!`);
                 gameEnd = true;
             }
 
@@ -263,3 +280,4 @@ document.querySelector(".divImgArrow").addEventListener('click', () => {
     imgArrow.classList.toggle('rotateMenuR');
     document.querySelector(".sideMenu").classList.toggle('showMenu');
 })
+

@@ -8,6 +8,11 @@
     font-family: 'Bungee Spice', cursive;
 }
 
+html{
+    background: linear-gradient(45deg, rgb(255, 89, 48), rgb(255, 160, 116), #ffdf75, #ffd272) no-repeat;
+    height: calc(110%);
+}
+
 header {
     display: flex;
     text-align: center;
@@ -16,7 +21,7 @@ header {
     width: 50vw;
     max-width: 35rem;
     min-width: 16rem;    
-    margin: 2rem auto;
+    margin: 1rem auto;
     margin-bottom: -1rem
 }
 .title{
@@ -29,6 +34,7 @@ button{
     border-radius: 100%;
     margin: auto;
     transform: translateY(0.7vw);
+    background: #ffffff00;
 }
 
 .imgRestart{
@@ -128,9 +134,12 @@ button{
 }
 
 .copy{
-    margin: 2vw;
+    background: linear-gradient(45deg, rgb(255, 89, 48), rgb(255, 160, 116), #ffdf75, #ffd272) no-repeat;
+    margin: auto;
+    margin-top: 0;
+    padding: 1vw;
     text-align: center;
-    font-size: max(10px, 1vw);
+    font-size: max(12px, 1vw);
 }
 
 .revealGame{
@@ -139,11 +148,13 @@ button{
 
 #msg{
     text-align: center;
+    display: flex;
 }
 
 #msg h1{
-    font-size: 3rem;
+    font-size: max(18px, 2.7vw);
     animation: jump 3s infinite ease;
+    margin-top: 1rem;
 }
 
 @keyframes jump { 
@@ -176,7 +187,7 @@ button{
 }
 
 .rotate{
-    animation: rotate 500ms linear;
+    animation: rotate 300ms linear;
 }
 
 @keyframes rotate {
@@ -212,11 +223,36 @@ button{
 }
 
 .estatistica{
+    margin-top: 20%;
+    color: #E67900;
+    text-decoration:underline;
+}
+
+.player{
     width: 13rem;
     padding: 0.6rem;
     background: #200909;
     text-align: center;
     border-radius: 1vw;
+
+}
+
+.changeName{
+    font-size: 0.7rem;
+    padding: 0.2rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10rem;
+    background: #1b1b1b;
+    box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.7);
+    transition: 300ms;
+}
+
+.changeName:hover{
+    background: #383838;
+    cursor: pointer;
+    transition: 300ms;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+
 }
 
 .imgArrow{
