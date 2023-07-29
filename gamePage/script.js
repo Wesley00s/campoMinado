@@ -1,14 +1,23 @@
+const gameBody = document.querySelector(".gameBody");
+const pointuation = document.querySelector(".points");
+const moves = document.querySelector(".moves");
+const revealGame = document.querySelector(".revealGame");
+const contadorBombs = document.querySelector(".bombas");
 
 let highest = parseInt(localStorage.getItem("highestScore")) || 0;
 let total = parseInt(localStorage.getItem("totalScore")) || 0;
 let bombsOpened = parseInt(localStorage.getItem("totalBombs")) || 0;
 let contAllMoves = parseInt(localStorage.getItem("totalMove")) || 0;
 
-const gameBody = document.querySelector(".gameBody");
-const pointuation = document.querySelector(".points");
-const moves = document.querySelector(".moves");
-const revealGame = document.querySelector(".revealGame");
-const contadorBombs = document.querySelector(".bombas");
+const totalBombs = document.querySelector(".totalBombs");
+const totalScore = document.querySelector(".totalScore");
+const totalMove = document.querySelector(".totalMove");
+const highestScore = document.querySelector(".highestScore");
+
+totalScore.innerHTML = total;
+totalBombs.innerHTML = bombsOpened;
+totalMove.innerHTML = contAllMoves;
+highestScore.innerHTML = highest;
 
 const addInformation = (info, key) => {
     if (!isNaN(info)) {
@@ -40,7 +49,7 @@ const initializeGame = () => {
     
     const pts = new Points(100);
     const totalSquares = 100;
-    const bombCount = 40;
+    const bombCount = 50;
     
     for (let i = 0; i < 100; i++) {
         
@@ -133,8 +142,6 @@ const initializeGame = () => {
         let controlMoves = true;
         element.addEventListener("click", () => {
             if (gameEnd) return;
-
-            const totalMove = document.querySelector(".totalMove");
             
             let controlBombs = true;
             if (element.classList.contains('squareClosed') && !element.classList.contains('bomb') && control) {
@@ -143,7 +150,6 @@ const initializeGame = () => {
                 element.classList.remove("squareClosed");
                 openSound();
                 pts.winP();
-                const totalScore = document.querySelector(".totalScore");
                 if (pts.p > 40) {
                     total += 10;
                     totalScore.innerHTML = total;
@@ -170,17 +176,17 @@ const initializeGame = () => {
                 setTimeout(() => {
                     gameBody.classList.remove('shake');
                 }, 500);
-                const totalBombs = document.querySelector(".totalBombs");
                 bombsOpened++;
                 totalBombs.innerHTML = bombsOpened;
-                addInformation(bombsOpened, 'totalBombs')
+                addInformation(bombsOpened, 'totalBombs');
                 contAllMoves++;
             }
-
-
+            
+            totalMove.innerHTML = contAllMoves;
             addInformation(contAllMoves, 'totalMove');
 
-            totalMove.innerHTML = contAllMoves;
+            
+
             control = false;
             pointuation.innerHTML = pts.p;
             
@@ -212,7 +218,6 @@ const initializeGame = () => {
                 gameEnd = true;
             }
 
-            const highestScore = document.querySelector(".highestScore");
             if (pts.p > highest) {
                 highest = pts.p;
                 highestScore.innerHTML = highest;
