@@ -25,7 +25,7 @@ const initializeGame = () => {
             if (this.p <= 40) {
                 this.p += 20;
             } else {
-                this.p += 200;
+                this.p += 10;
             }
         }
     }
