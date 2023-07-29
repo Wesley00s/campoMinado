@@ -32,17 +32,15 @@ button{
 }
 
 .imgRestart{
-    /* box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.6); */
     border-radius: 100%;
-    background: #000;
     width: 5vw;
     max-width: 2.2rem;
+    min-width: 1.4rem;
 }
 
 .imgRestart:hover{
     opacity: 0.5;
     transition: 300ms;
-    /* box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.6); */
     cursor: pointer;
 
 }
@@ -119,7 +117,7 @@ button{
     max-width: 3.5rem;
     margin: 2px;
     cursor: pointer;
-    border-radius: 0.5rem;
+    border-radius: 17%;
     transition: 200ms;
 }
 
@@ -197,7 +195,7 @@ button{
     min-height: 60rem;
     position: fixed;
     z-index: 2;
-    box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 0px 9px rgba(0, 0, 0, 0.6);
     left: -15rem;
     transition: 500ms;
 }
