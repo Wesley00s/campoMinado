@@ -6,16 +6,16 @@ player.value = localStorage.getItem('player').trim();
 player.addEventListener("input", (event) => {
     const inputValue = event.target.value.trim();
     if (/\S/.test(inputValue) && event.target.value.length > 2) {
-        btnSubmit.disabled = false;
+        btnSubmit.removeAttribute("disabled");
     } else {
-        btnSubmit.disabled = true;
+        btnSubmit.setAttribute('disabled', '');
     }
 });
 
 btnSubmit.addEventListener('click', (event) => {
     if (!btnSubmit.disabled) {
         event.preventDefault();
-        window.location.href = 'gamePage/index.html';
+        window.location.href = 'gamePage/game.html';
         localStorage.setItem('player', player.value);
     }
 });
