@@ -1,12 +1,20 @@
+
+let highest = parseInt(localStorage.getItem("highestScore")) || 0;
+let total = parseInt(localStorage.getItem("totalScore")) || 0;
+let bombsOpened = parseInt(localStorage.getItem("totalBombs")) || 0;
+let contAllMoves = parseInt(localStorage.getItem("totalMove")) || 0;
+
 const gameBody = document.querySelector(".gameBody");
 const pointuation = document.querySelector(".points");
 const moves = document.querySelector(".moves");
 const revealGame = document.querySelector(".revealGame");
 const contadorBombs = document.querySelector(".bombas");
-let highest = 0;
-let total = 0;
 
-
+const addInformation = (info, key) => {
+    if (!isNaN(info)) {
+        localStorage.setItem(key, Number(info));
+    }
+}
 
 const initializeGame = () => {
     class Points {
@@ -125,6 +133,9 @@ const initializeGame = () => {
         let controlMoves = true;
         element.addEventListener("click", () => {
             if (gameEnd) return;
+
+            const totalMove = document.querySelector(".totalMove");
+            
             let controlBombs = true;
             if (element.classList.contains('squareClosed') && !element.classList.contains('bomb') && control) {
                 element.src = "emptySquare.png";
@@ -132,6 +143,17 @@ const initializeGame = () => {
                 element.classList.remove("squareClosed");
                 openSound();
                 pts.winP();
+                const totalScore = document.querySelector(".totalScore");
+                if (pts.p > 40) {
+                    total += 10;
+                    totalScore.innerHTML = total;
+                } else {
+                    total += 20;
+                    totalScore.innerHTML = total;
+                }
+                contAllMoves++;
+                addInformation(Number(totalScore.innerHTML), 'totalScore')
+
             } else if (element.classList.contains('squareClosed') && element.classList.contains('bomb') && control) {
                 gameBody.classList.add('shake');
                 element.src = "bombSquare.png";
@@ -148,7 +170,17 @@ const initializeGame = () => {
                 setTimeout(() => {
                     gameBody.classList.remove('shake');
                 }, 500);
+                const totalBombs = document.querySelector(".totalBombs");
+                bombsOpened++;
+                totalBombs.innerHTML = bombsOpened;
+                addInformation(bombsOpened, 'totalBombs')
+                contAllMoves++;
             }
+
+
+            addInformation(contAllMoves, 'totalMove');
+
+            totalMove.innerHTML = contAllMoves;
             control = false;
             pointuation.innerHTML = pts.p;
             
@@ -179,26 +211,19 @@ const initializeGame = () => {
                 showMessage('Você ganhou!');
                 gameEnd = true;
             }
-            const highestScore = document.querySelector(".highestScore");
-            const totalScore = document.querySelector(".totalScore");
-            const totalBombs = document.querySelector(".totalBombs");
-            const totalMove = document.querySelector(".totalMove");
 
+            const highestScore = document.querySelector(".highestScore");
             if (pts.p > highest) {
                 highest = pts.p;
                 highestScore.innerHTML = highest;
             }
 
-            total += pts.p;
-            
-            totalScore.innerHTML = total;
+            addInformation(highest, 'highestScore');
             
         });
     });
-
+    
 };
-
-
 
 
 const removeMsg = () => {
@@ -207,12 +232,14 @@ const removeMsg = () => {
 }
 
 initializeGame();
+
+
 const imgRestart = document.querySelector('.imgRestart');
 
 restart.addEventListener('click', () => {
     imgRestart.classList.add("rotate");
     gameBody.innerHTML = '';
-    pointuation.innerHTML = 0;
+    pointuation.innerHTML = 100;
     moves.innerHTML = 0;
     contadorBombs.innerHTML = 0;
 
@@ -223,8 +250,6 @@ restart.addEventListener('click', () => {
         imgRestart.classList.remove("rotate");
     }, 500);
 });
-
-
 
 
 document.querySelector(".divImgArrow").addEventListener('click', () => {
