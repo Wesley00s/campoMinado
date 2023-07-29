@@ -10,27 +10,33 @@
 
 header {
     display: flex;
-    font-size: x-large;
     text-align: center;
+    justify-content: center;
     flex-direction: row;
-    width: 30rem;
+    width: 50vw;
+    max-width: 35rem;
+    min-width: 16rem;    
     margin: 2rem auto;
+    margin-bottom: -1rem
 }
 .title{
     display: flex;
     width: fit-content;
     margin: auto;
+    font-size: max(26px, 3vw);
 }
 button{
     border-radius: 100%;
     margin: auto;
+    transform: translateY(0.7vw);
 }
 
 .imgRestart{
     /* box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.6); */
     border-radius: 100%;
     background: #000;
-    width: 2.4rem;
+    width: 5vw;
+    max-width: 2.2rem;
 }
 
 .imgRestart:hover{
@@ -47,7 +53,9 @@ button{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    width: 40rem;
+    width: 59vw;
+    max-width: 40rem;
+    min-width: 20rem;
     margin: 0.9rem auto;
 
 }
@@ -96,18 +104,19 @@ button{
     flex-wrap: nowrap;
     width: 100%;
     margin: auto; 
-    font-size: small;
+    font-size: max(10px, 0.8vw);
 }
 
 .cont{
     display: inline;
     margin: 1rem;
-    font-size: 1rem;
+    font-size: max(15px, 1.2vw);
 }
 
-
-
 .square{
+    width: 5vw;
+    min-width: 1.7rem;
+    max-width: 3.5rem;
     margin: 2px;
     cursor: pointer;
     border-radius: 0.5rem;
@@ -121,9 +130,9 @@ button{
 }
 
 .copy{
-    margin-top: 2rem;
+    margin: 2vw;
     text-align: center;
-    font-size: 1rem;
+    font-size: max(10px, 1vw);
 }
 
 .revealGame{
@@ -164,7 +173,7 @@ button{
     flex-direction: column;
     width: fit-content;
     margin: auto;
-    font-size: 1.3rem;
+    font-size: max(15px, 1.2vw);
     margin-top: 2rem;
 }
 
@@ -186,7 +195,8 @@ button{
     width: 15rem;
     height: 100vw;
     min-height: 60rem;
-    position: absolute;
+    position: fixed;
+    z-index: 2;
     box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.5);
     left: -15rem;
     transition: 500ms;

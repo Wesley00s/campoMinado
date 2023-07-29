@@ -179,7 +179,6 @@ const initializeGame = () => {
                 showMessage('Você ganhou!');
                 gameEnd = true;
             }
-            console.log(gameEnd);
             const highestScore = document.querySelector(".highestScore");
             const totalScore = document.querySelector(".totalScore");
             const totalBombs = document.querySelector(".totalBombs");
