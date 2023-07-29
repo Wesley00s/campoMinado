@@ -159,21 +159,13 @@ button{
 
 .rules{
     display: flex;
-    align-items: start;
+    align-items: center;
     justify-content: center;
     flex-direction: column;
     width: fit-content;
     margin: auto;
     font-size: 1.3rem;
     margin-top: 2rem;
-}
-
-.pts{
-    transform: translate(8.7rem, -0.01rem);
-}
-
-.obj{
-    margin-bottom: -1.55rem;
 }
 
 .rotate{
@@ -183,5 +175,86 @@ button{
 @keyframes rotate {
     from {
         transform: rotate(360deg);
+    }
+}
+
+.sideMenu{
+    margin-top: -2rem;
+    margin-bottom: -2rem;
+    background: #000000de;
+    display: block;
+    width: 15rem;
+    height: 100vw;
+    min-height: 60rem;
+    position: absolute;
+    box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.5);
+    left: -15rem;
+    transition: 500ms;
+}
+
+.showMenu{
+    left: 0;
+    transition: 500ms;
+}
+
+.menuContent{
+    margin: 3rem 1rem;
+    font-size: 1rem;
+}
+
+.imgArrow{
+    margin-left: -0.5rem;
+    transition: 300ms linear;
+}
+
+.divImgArrow:hover{
+    background: #ad5e04;
+    cursor: pointer;
+    
+}
+
+.divImgArrow{
+    display: flex;
+    margin: 1rem 15rem;
+    width: 2rem;
+    border-radius: 0 2rem 2rem 0;
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.5);
+    transition: 300ms linear;
+    padding: 0.35rem 1.1rem;
+    background: #E67900;
+    opacity: 0.9;
+}
+
+.rotateMenuL{
+    transition: 300ms linear;
+    animation: rotateMenuL 400ms linear forwards;
+
+}
+
+@keyframes rotateMenuL {
+    0%{
+        transform: rotate(0);
+        transform-origin: center;
+    }
+    100%{
+        transform: rotate(180deg);    
+        transform-origin: center;
+    }
+}
+
+.rotateMenuR{
+    transition: 300ms linear;
+    animation: rotateMenuR 400ms linear forwards;
+
+}
+
+@keyframes rotateMenuR {
+    0%{
+        transform: rotate(180deg);
+        transform-origin: center;
+    }
+    100%{
+        transform: rotate(360deg);    
+        transform-origin: center;
     }
 }

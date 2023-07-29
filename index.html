@@ -11,10 +11,22 @@
     <audio id="open" src="soundEmpty.wav"></audio>
     <audio id="gameWin" src="gameWin.wav"></audio>
     <audio id="gameOver" src="gameOver.wav"></audio>
+    <div class="sideMenu">
+        <div class="divImgArrow">
+            <img src="arrow.png" class="imgArrow rotateMenuL" alt="Ver" width="15">
+        </div>
+        <div class="divContentMenu">
+            <h2 class="menuContent">Maior pontuação: <p class="highestScore"></p></h2>
+            <h2 class="menuContent">Total de pontos acumulados: <p class="totalScore"></p></h2>
+            <h2 class="menuContent">Total de bombas estouradas: <p class="totalBombs"></p></h2>
+            <h2 class="menuContent">Total de movimentos: <p class="totalMoves"></p></h2>
+        </div>
+
+    </div>
     <header>
         <h1 class="title" id="title">CAMPO MINADO<h1>
-        <button id="restart"><img class="imgRestart" src="restart.png" alt=""></button>
-    </header>
+            <button id="restart"><img class="imgRestart" src="restart.png" alt="Restart"></button>
+        </header>
         <div class="rules">
             <p class="obj">Objetivo: <p class="pts">200 pts.</p></p>
             <p>Cuidado com as bombas.</p>

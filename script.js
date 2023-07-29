@@ -3,6 +3,9 @@ const pointuation = document.querySelector(".points");
 const moves = document.querySelector(".moves");
 const revealGame = document.querySelector(".revealGame");
 const contadorBombs = document.querySelector(".bombas");
+let highest = 0;
+let total = 0;
+
 
 
 const initializeGame = () => {
@@ -22,7 +25,7 @@ const initializeGame = () => {
             if (this.p <= 40) {
                 this.p += 20;
             } else {
-                this.p += 10;
+                this.p += 200;
             }
         }
     }
@@ -177,10 +180,27 @@ const initializeGame = () => {
                 gameEnd = true;
             }
             console.log(gameEnd);
+            const highestScore = document.querySelector(".highestScore");
+            const totalScore = document.querySelector(".totalScore");
+            const totalBombs = document.querySelector(".totalBombs");
+            const totalMove = document.querySelector(".totalMove");
+
+            if (pts.p > highest) {
+                highest = pts.p;
+                highestScore.innerHTML = highest;
+            }
+
+            total += pts.p;
+            
+            totalScore.innerHTML = total;
+            
         });
     });
-    
+
 };
+
+
+
 
 const removeMsg = () => {
     document.querySelector("#msg").innerHTML = '';
@@ -204,3 +224,13 @@ restart.addEventListener('click', () => {
         imgRestart.classList.remove("rotate");
     }, 500);
 });
+
+
+
+
+document.querySelector(".divImgArrow").addEventListener('click', () => {
+    const imgArrow = document.querySelector(".imgArrow");
+    imgArrow.classList.toggle('rotateMenuL');
+    imgArrow.classList.toggle('rotateMenuR');
+    document.querySelector(".sideMenu").classList.toggle('showMenu');
+})
