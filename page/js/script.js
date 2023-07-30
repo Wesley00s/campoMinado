@@ -5,6 +5,15 @@ const revealGame = document.querySelector(".revealGame");
 const contadorBombs = document.querySelector(".bombas");
 const player = document.querySelector(".player");
 const changeName = document.querySelector(".changeName");
+const main = document.querySelector(".main");
+
+const settings = document.querySelector(".settings");
+const hiddenMenu = document.querySelector(".hiddenMenu");
+
+const totalBombs = document.querySelector(".totalBombs");
+const totalScore = document.querySelector(".totalScore");
+const totalMove = document.querySelector(".totalMove");
+const highestScore = document.querySelector(".highestScore");
 
 let playerName = localStorage.getItem("player");
 player.innerHTML = playerName;
@@ -12,18 +21,17 @@ player.innerHTML = playerName;
 changeName.addEventListener('click', () => {
     window.location.href = '../index.html'
 
-})
+});
 
+settings.addEventListener('click', () => {
+    hiddenMenu.classList.toggle('hidden');
+});
 
 let highest = parseInt(localStorage.getItem("highestScore")) || 0;
 let total = parseInt(localStorage.getItem("totalScore")) || 0;
 let bombsOpened = parseInt(localStorage.getItem("totalBombs")) || 0;
 let contAllMoves = parseInt(localStorage.getItem("totalMove")) || 0;
 
-const totalBombs = document.querySelector(".totalBombs");
-const totalScore = document.querySelector(".totalScore");
-const totalMove = document.querySelector(".totalMove");
-const highestScore = document.querySelector(".highestScore");
 
 totalScore.innerHTML = total;
 totalBombs.innerHTML = bombsOpened;
@@ -61,11 +69,14 @@ const initializeGame = () => {
     const pts = new Points(100);
     const totalSquares = 100;
     const bombCount = 50;
+
+    
+
     
     for (let i = 0; i < 100; i++) {
         
         let img = document.createElement("img");
-        img.src = "square.png";
+        img.src = "img/square.png";
         img.id = `sq${i + 1}`;
         img.classList.add("square");
         img.classList.add("squareClosed");
@@ -129,11 +140,11 @@ const initializeGame = () => {
     const revealAllSquares = () => {
         squareArray.forEach(element => {
             if (element.classList.contains('squareClosed') && !element.classList.contains('bomb')) {
-                element.src = "emptySquare.png";
+                element.src = "img/emptySquare.png";
                 element.classList.add("emptyOpen");
                 element.classList.remove("squareClosed");
             } else if (element.classList.contains('squareClosed') && element.classList.contains('bomb')) {
-                element.src = "bombSquare.png";
+                element.src = "img/bombSquare.png";
                 element.classList.add("bomb");
                 element.classList.remove("squareClosed");
             }
@@ -156,7 +167,7 @@ const initializeGame = () => {
             
             let controlBombs = true;
             if (element.classList.contains('squareClosed') && !element.classList.contains('bomb') && control) {
-                element.src = "emptySquare.png";
+                element.src = "img/emptySquare.png";
                 element.classList.add("emptyOpen");
                 element.classList.remove("squareClosed");
                 openSound();
@@ -172,8 +183,8 @@ const initializeGame = () => {
                 addInformation(Number(totalScore.innerHTML), 'totalScore')
 
             } else if (element.classList.contains('squareClosed') && element.classList.contains('bomb') && control) {
-                gameBody.classList.add('shake');
-                element.src = "bombSquare.png";
+                main.classList.add('shake');
+                element.src = "img/bombSquare.png";
                 element.classList.add("bomb");
                 element.classList.remove("squareClosed");
                 element.classList.add('shakeBomb');
@@ -185,7 +196,7 @@ const initializeGame = () => {
                     controlBombs = false;
                 }
                 setTimeout(() => {
-                    gameBody.classList.remove('shake');
+                    main.classList.remove('shake');
                 }, 500);
                 bombsOpened++;
                 totalBombs.innerHTML = bombsOpened;
@@ -247,14 +258,12 @@ const initializeGame = () => {
     
 };
 
-
 const removeMsg = () => {
     document.querySelector("#msg").innerHTML = '';
 
 }
 
 initializeGame();
-
 
 const imgRestart = document.querySelector('.imgRestart');
 
@@ -272,7 +281,6 @@ restart.addEventListener('click', () => {
         imgRestart.classList.remove("rotate");
     }, 500);
 });
-
 
 document.querySelector(".divImgArrow").addEventListener('click', () => {
     const imgArrow = document.querySelector(".imgArrow");

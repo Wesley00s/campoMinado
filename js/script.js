@@ -1,7 +1,6 @@
 const player = document.querySelector("#name");
 const btnSubmit = document.querySelector("#btnSubmit");
 
-
 player.value = localStorage.getItem('player');
 
 player.addEventListener("input", (event) => {
@@ -16,7 +15,7 @@ player.addEventListener("input", (event) => {
 btnSubmit.addEventListener('click', (event) => {
     if (!btnSubmit.disabled) {
         event.preventDefault();
-        window.location.href = 'gamePage/game.html';
+        window.location.href = 'page/game.html';
         localStorage.setItem('player', player.value);
     }
 });

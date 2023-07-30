@@ -324,3 +324,56 @@ button{
         transform-origin: center;
     }
 }
+
+.hiddenMenu{
+    background: #000000e8;
+    position: absolute;
+    width: 70vw;
+    max-width: 30rem;
+    height: 100vw;
+    max-height: 40rem;
+    z-index: 2;
+    border-radius: 1.5rem;
+    display: flex;
+    transition: all 700ms;
+    top: -700px;
+
+}
+
+.hidden{
+    transition: all 700ms;
+    top: 10px;
+}
+
+.backArrow{
+    width: 60px;
+    height: 60px;
+    padding: 1rem;
+    align-items: start;
+    transition: 300ms;
+}
+
+.backArrow:hover{
+    transition: 300ms;
+    opacity: 0.6;
+}
+
+.rotateBack{
+    animation: rotateBack 5s ease-in-out backwards;
+}
+
+@keyframes rotateBack {
+    0%{
+        transform: rotate(0);
+    }
+    50%{
+        transform: rotate(-90deg);
+    }
+    15%{
+        transform: rotate(-90deg);
+    }
+    100%{
+        transform: rotate(-90deg);
+    }
+}
+
