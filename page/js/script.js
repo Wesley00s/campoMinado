@@ -9,6 +9,8 @@ const main = document.querySelector(".main");
 
 const settings = document.querySelector(".settings");
 const hiddenMenu = document.querySelector(".hiddenMenu");
+const backArrow = document.querySelector(".backArrow");
+const hiddenContent = document.querySelector(".hiddenContent");
 
 const totalBombs = document.querySelector(".totalBombs");
 const totalScore = document.querySelector(".totalScore");
@@ -24,7 +26,18 @@ changeName.addEventListener('click', () => {
 });
 
 settings.addEventListener('click', () => {
-    hiddenMenu.classList.toggle('hidden');
+    settings.classList.add('rotateMenuL');
+    hiddenMenu.classList.add('hidden');
+    hiddenContent.classList.add('overlay');
+    hiddenContent.classList.add('bgOverlay');
+
+    backArrow.addEventListener('click', () => {
+        hiddenMenu.classList.remove('hidden');
+        hiddenContent.classList.remove("overlay");
+        hiddenContent.classList.remove("bgOverlay");
+        settings.classList.remove('rotateMenuL');
+
+    });
 });
 
 let highest = parseInt(localStorage.getItem("highestScore")) || 0;

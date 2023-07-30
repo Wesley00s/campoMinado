@@ -6,47 +6,76 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Campo Minado</title>
 </head>
-<body>
-    <div class="main">
+<body class="main">
 
-        <audio id="explosion" src="sounds/soundBomb.wav"></audio>
-        <audio id="open" src="sounds/soundEmpty.wav"></audio>
-        <audio id="gameWin" src="sounds/gameWin.wav"></audio>
-        <audio id="gameOver" src="sounds/gameOver.wav"></audio>
-        <div class="sideMenu">
-            <div class="divImgArrow">
-                <img src="img/arrow.png" class="imgArrow rotateMenuL" alt="Ver" width="15">
-            </div>
-            <div class="divContentMenu">
-                <p class="changeName">Rename</p>
-                <h3 class="player">Player</h3>
-                <h2 class="estatistica">Estatisticas</h2>
-                <h4 class="menuContent first">Maior pontuação: <p class="highestScore"></p></h4>
-                <h4 class="menuContent">Total de pontos acumulados: <p class="totalScore"></p></h4>
-                <h4 class="menuContent">Total de bombas estouradas: <p class="totalBombs"></p></h4>
-                <h4 class="menuContent">Total de movimentos: <p class="totalMove"></p></h4>
+    <audio id="explosion" src="sounds/soundBomb.wav"></audio>
+    <audio id="open" src="sounds/soundEmpty.wav"></audio>
+    <audio id="gameWin" src="sounds/gameWin.wav"></audio>
+    <audio id="gameOver" src="sounds/gameOver.wav"></audio>
+    <div class="sideMenu">
+        <div class="divImgArrow">
+            <img src="img/arrow.png" class="imgArrow rotateMenuL" alt="Ver" width="15">
+        </div>
+        <div class="divContentMenu">
+            <p class="changeName">Rename</p>
+            <h3 class="player">Player</h3>
+            <h2 class="estatistica">Estatisticas</h2>
+            <h4 class="menuContent first">Maior pontuação: <p class="highestScore"></p></h4>
+            <h4 class="menuContent">Total de pontos acumulados: <p class="totalScore"></p></h4>
+            <h4 class="menuContent">Total de bombas estouradas: <p class="totalBombs"></p></h4>
+            <h4 class="menuContent">Total de movimentos: <p class="totalMove"></p></h4>
+        </div>
+        
+    </div>
+    <header>
+        <div class="hiddenMenu">
+            <img src="img/backArrow.png" alt="back" class="backArrow">
+            <div class="contentHidden">
+
+                <h2 class="hiddenTitle">Escolha o nível</h2>
+                <p class="plevel">
+                    <input type="radio" name="level" id="" class="inputLevel">
+                    Fácil
+                </p>
+                <p class="plevel">
+                    <input type="radio" name="level" id="" class="inputLevel">
+                    Médio
+                </p>
+                <p class="plevel">
+                    <input type="radio" name="level" id="" class="inputLevel">
+                    Dficil
+                </p>
+                <p class="plevel">
+                    <input type="radio" name="level" id="" class="inputLevel">
+                    Impossível
+                </p>
+                <p class="plevel">
+                    <input type="radio" name="level" id="" class="inputLevel">
+                    Modo Livre
+                </p>
+                <button class="confirm">Confirmar</button>
             </div>
             
         </div>
-        <header>
-            <div class="hiddenMenu">
-                <img src="img/backArrow.png" alt="back" class="backArrow rotateBack">
-            </div>
-            <div class="option">
-                <img src="img/settings.png" alt="settings" class="settings">
-            </div>
-            <h1 class="title" id="title">CAMPO MINADO<h1>
-                <button id="restart"><img class="imgRestart" src="img/restart.png" alt="Restart"></button>
-            </header>
-            <div class="rules">
-                <p class="obj">Objetivo: <p class="pts">200 pts.</p></p>
-                <p>Cuidado com as bombas.</p>
-                <p>Perde ao chegar a zero.</p>
-                <div id="msg"></div>
-            </div>
-    
+        <div class="option">
+            <img src="img/settings.png" alt="settings" class="settings">
+        </div>
+        <h1 class="title" id="title">CAMPO MINADO<h1>
+            <button id="restart"><img class="imgRestart" src="img/restart.png" alt="Restart"></button>
+        </header>
+
+        
+        <div class="rules">
+            <p class="obj">Objetivo: <p class="pts">200 pts.</p></p>
+            <p>Cuidado com as bombas.</p>
+            <p>Perde ao chegar a zero.</p>
+            <div id="msg"></div>
+        </div>
+        
+        <div class="hiddenContent">
             <div class="gameBody" id="gameBody"></div>
             <div class="revealGame"></div>
+        </div>
             <div class="divPoints">
                 <h2>
                     Pontuação:<p class="points cont">
@@ -60,12 +89,11 @@
                     Bombas abertas:<p class="bombas cont">0</p>
                 </h2>
             </div>
-        <div class="copy">
-            <small>
-                &copy; Copyright 2023, all rights reserved. Developed by, @Wesley R.S
-            </small>
-        </div>
-    </div>
+            <div class="copy">
+                <small>
+                    &copy; Copyright 2023, all rights reserved. Developed by, @Wesley R.S
+                </small>
+            </div>
     <script src="js/script.js"></script>
 </body>
 </html>
