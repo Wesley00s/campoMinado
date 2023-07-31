@@ -370,7 +370,7 @@ btnConfirm.addEventListener('click', () => {
                     }, 700);
                     myFunctions.showMessage(`Parabéns ${playerName}, você ganhou!`);
                     gameEnd = true;
-                } else if (verify && contMoves >= 100) {
+                } else if (verify && contMoves >= 80) {
                     if (maxScore < pts.p) {
                         maxScore = pts.p;
                         myFunctions.addInfo(maxScore, 'maxScore');
