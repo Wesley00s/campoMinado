@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <title>Campo Minado</title>
 </head>
@@ -12,6 +13,7 @@
     <audio id="open" src="sounds/soundEmpty.wav"></audio>
     <audio id="gameWin" src="sounds/gameWin.wav"></audio>
     <audio id="gameOver" src="sounds/gameOver.wav"></audio>
+    <audio id="soundMenu" src="sounds/menuSound.wav"></audio>
     <div class="sideMenu">
         <div class="divImgArrow">
             <img src="img/arrow.png" class="imgArrow rotateMenuL" alt="Ver" width="15">
@@ -77,18 +79,9 @@
         </header>
 
         <div class="rules">
-            <p class="obj">
-                <!-- Objetivo: <p class="pts">200 pts.</p> -->
-            </p>
-            <p class="nBombs">
 
-            </p>
-            <p class="takeLoss">
-                <!-- Perde ao chegar a zero. -->
-            </p>
-            <div id="msg"></div>
         </div>
-        
+        <div id="msg"></div>
         <div class="hiddenContent">
             <div class="gameBody" id="gameBody"></div>
             <div class="revealGame"></div>

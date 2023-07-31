@@ -6,6 +6,20 @@ const contadorBombs = document.querySelector(".bombas");
 const player = document.querySelector(".player");
 const changeName = document.querySelector(".changeName");
 const main = document.querySelector(".main");
+const rules = document.querySelector(".rules");
+
+const createRules = () => {
+    const p1 = document.createElement('p');
+    const p2 = document.createElement('p');
+    const p3 = document.createElement('p');
+    p1.classList.add('obj');
+    p2.classList.add('nBombs');
+    p3.classList.add('takeLoss');
+
+    rules.appendChild(p1);
+    rules.appendChild(p2);
+    rules.appendChild(p3);
+};
 
 const settings = document.querySelector(".settings");
 const hiddenMenu = document.querySelector(".hiddenMenu");
@@ -25,6 +39,8 @@ const totalMove = document.querySelector(".totalMove");
 const totalWins = document.querySelector(".totalWins");
 const totalUses = document.querySelector(".totalUses");
 const highestScore = document.querySelector(".highestScore");
+
+
 
 let playerName = localStorage.getItem("player");
 player.innerHTML = playerName;
@@ -53,6 +69,48 @@ const myFunctions = {
     showMessage: (msg) => {
             document.querySelector("#msg").innerHTML = `<h1>${msg}</h1>`;
     },
+
+    soundEfects:
+        mySounds = {
+            explosionSound: () => {
+                const explosion = document.querySelector('#explosion');
+                explosion.play();
+                explosion.currentTime = 0;
+            
+                setTimeout(() => {
+                    explosion.pause();
+                }, 600);
+            },
+            
+            openSound: () => {
+                const open = document.querySelector('#open');
+                open.play();
+                open.currentTime = 0;
+            
+                setTimeout(() => {
+                    open.pause();
+                }, 600);
+            },
+
+            soundMenu: () => {
+                const soundMenu = document.querySelector('#soundMenu');
+                soundMenu.play();
+                soundMenu.currentTime = 0;
+            },
+            
+            soundWin: () => {
+                const gameWin = document.querySelector('#gameWin');
+                gameWin.play();
+                gameWin.currentTime = 0;
+            },
+            
+            soundOver: () => {
+                const gameOver = document.querySelector('#gameOver');
+                gameOver.play();
+                gameOver.currentTime = 0;
+            }
+        },
+
     generateRandom: (total, count) => {
         const indices = Array.from({ length: total }, (_, i) => i);
         const randomIndices = [];
@@ -144,6 +202,7 @@ const input = document.querySelectorAll('.inputLevel').forEach(inpt => {
 });
 
 btnConfirm.addEventListener('click', () => {
+    createRules();
         gameBody.classList.remove('visibility');
         gameBody.innerHTML = '';
         pointuation.innerHTML = 100;
@@ -157,55 +216,60 @@ btnConfirm.addEventListener('click', () => {
     const nBombs = document.querySelector('.nBombs');
     const takeLoss = document.querySelector('.takeLoss');
     
-    let n;
     let verify = false;
-    switch (true) {
-        case radioFacil.checked:
-            n = 30;
-            mode.innerHTML = 'Fácil';
-            obj.innerHTML = 'Objetivo: 200pts';
-            nBombs.innerHTML = `${n} bombas em campo, isso será fácil para você, ${playerName}!`;
-            takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;           
-            break;
-        case radioMedio.checked:
-            n = 40;
-            mode.innerHTML = 'Médio';
-            obj.innerHTML = 'Objetivo: 200pts';
-            nBombs.innerHTML = `${n} bombas em campo, é um poco mais desafiador, mas nada que você não dê conta, ${playerName}!`;
-            takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;  
-            break;
-        case radioDificil.checked:
-            n = 50;
-            mode.innerHTML = 'Difícil';
-            obj.innerHTML = 'Objetivo: 200pts';
-            nBombs.innerHTML = `${n} bombas em campo, você terá que ter um pouco mais de cuidado, ${playerName}!`;
-            takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;  
-            break;
-        case radioImpossivel.checked:
-            n = 60;
-            mode.innerHTML = 'Impossível';
-            obj.innerHTML = 'Objetivo: 200pts';
-            nBombs.innerHTML = `${n} bombas em campo, tente a sorte... você vai precisar, ${playerName}!`;
-            takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;  
-            break;
-        case radioLivre.checked:
-            n = 20;
-            mode.innerHTML = 'Livre';
-            obj.innerHTML = 'Bata seu recorde!';
-            nBombs.innerHTML = `Aqui você não tem limites de pontos, você define seu própio limite, ${playerName}!`;
-            takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;  
-            verify = true;
-            break;
-        default:
-            alert("Por favor selecione uma opção");
-            break;
+    const checkRadio = () => {
+        let n;
+        switch (true) {
+            case radioFacil.checked:
+                n = 30;
+                
+                mode.innerHTML = 'Fácil';
+                obj.innerHTML = 'Objetivo: 200pts';
+                nBombs.innerHTML = `${n} bombas em campo, isso será fácil para você, ${playerName}!`;
+                takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;           
+                break;
+            case radioMedio.checked:
+                n = 40;
+                mode.innerHTML = 'Médio';
+                obj.innerHTML = 'Objetivo: 200pts';
+                nBombs.innerHTML = `${n} bombas em campo, é um poco mais desafiador, mas nada que você não dê conta, ${playerName}!`;
+                takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;  
+                break;
+            case radioDificil.checked:
+                n = 50;
+                mode.innerHTML = 'Difícil';
+                obj.innerHTML = 'Objetivo: 200pts';
+                nBombs.innerHTML = `${n} bombas em campo, você terá que ter um pouco mais de cuidado, ${playerName}!`;
+                takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;  
+                break;
+            case radioImpossivel.checked:
+                n = 60;
+                mode.innerHTML = 'Impossível';
+                obj.innerHTML = 'Objetivo: 200pts';
+                nBombs.innerHTML = `${n} bombas em campo, tente a sorte... você vai precisar, ${playerName}!`;
+                takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;  
+                break;
+            case radioLivre.checked:
+                n = 20;
+                mode.innerHTML = 'Livre';
+                obj.innerHTML = 'Bata seu recorde!';
+                nBombs.innerHTML = `Aqui você não tem limites de pontos, você define seu própio limite, ${playerName}!`;
+                takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;  
+                verify = true;
+                break;
+            default:
+                alert("Por favor selecione uma opção");
+                break;
+        }
+        return n;
     }
-    const bombCount = n;
+    const bombCount = checkRadio();
     
     hiddenMenu.classList.remove('hidden');
     settings.classList.remove('rotateMenuL');           
                             
     const initializeGame = () => {
+        createRules();
         class Points {
             constructor(p) {
                 this.p = p;
@@ -252,38 +316,6 @@ btnConfirm.addEventListener('click', () => {
         
         const squareArray = [...square];
         
-        const explosionSound = () => {
-            const explosion = document.querySelector('#explosion');
-            explosion.play();
-            explosion.currentTime = 0;
-        
-            setTimeout(() => {
-                explosion.pause();
-            }, 600);
-        }
-        
-        const openSound = () => {
-            const open = document.querySelector('#open');
-            open.play();
-            open.currentTime = 0;
-        
-            setTimeout(() => {
-                open.pause();
-            }, 600);
-        };
-        
-        const soundWin = () => {
-            const gameWin = document.querySelector('#gameWin');
-            gameWin.play();
-            gameWin.currentTime = 0;
-        }
-        
-        const soundOver = () => {
-            const gameOver = document.querySelector('#gameOver');
-            gameOver.play();
-            gameOver.currentTime = 0;
-        }
-        
         const revealAllSquares = () => {
             squareArray.forEach(element => {
                 if (element.classList.contains('squareClosed') && !element.classList.contains('bomb')) {
@@ -313,7 +345,7 @@ btnConfirm.addEventListener('click', () => {
                     element.src = "img/emptySquare.png";
                     element.classList.add("emptyOpen");
                     element.classList.remove("squareClosed");
-                    openSound();
+                    myFunctions.soundEfects.openSound();
                     pts.winP();
                     if (pts.p > 40) {
                         total += 10;
@@ -331,7 +363,7 @@ btnConfirm.addEventListener('click', () => {
                     element.classList.add("bomb");
                     element.classList.remove("squareClosed");
                     element.classList.add('shakeBomb');
-                    explosionSound();
+                    myFunctions.soundEfects.explosionSound();
                     pts.lossP();
                     if (controlBombs) {
                         contBombs++;
@@ -360,34 +392,39 @@ btnConfirm.addEventListener('click', () => {
                 }
     
                 if (contMoves <= 10 && pts.p >= 200 && !verify) {
+                    rules.innerHTML = '';
                     revealAllSquares();
                     setTimeout(() => {
-                        soundWin();
+                        myFunctions.soundEfects.soundWin();
                     }, 700);
                     myFunctions.showMessage(`Uau! Isso é impressioante ${playerName}, você ganhou sem estourar nenhuma bomba, você tem meus parabéns!`);
                     gameEnd = true;
-                }else if (pts.p <= 0) {
+                } else if (pts.p <= 0) {
+                    rules.innerHTML = '';
                     revealAllSquares();
                     setTimeout(() => {
-                        soundOver();
+                        myFunctions.soundEfects.soundOver();
                     }, 700);
                     myFunctions.showMessage(`Não foi dessa vez ${playerName}, você perdeu!`);
                     gameEnd = true;
                 } else if (contMoves === 100 && pts.p < 200 && !verify) {
+                    rules.innerHTML = '';
                     revealAllSquares();
                     setTimeout(() => {
-                        soundOver();
+                        myFunctions.soundEfects.soundOver();
                     }, 700);
                     myFunctions.showMessage(`Você não conseguiu completar o desafio, ${playerName}!`);
                     gameEnd = true;
                 } else if (pts.p >= 200 && !verify) {
+                    rules.innerHTML = '';
                     revealAllSquares();
                     setTimeout(() => {
-                        soundWin();
+                        myFunctions.soundEfects.soundWin();
                     }, 700);
                     myFunctions.showMessage(`Parabéns ${playerName}, você ganhou!`);
                     gameEnd = true;
                 } else if (verify && contMoves >= 80) {
+                    rules.innerHTML = '';
                     if (maxScore < pts.p) {
                         maxScore = pts.p;
                         myFunctions.addInfo(maxScore, 'maxScore');
@@ -397,18 +434,19 @@ btnConfirm.addEventListener('click', () => {
                     }
                     revealAllSquares();
                     setTimeout(() => {
-                        soundWin();
+                        myFunctions.soundEfects.soundWin();
                     }, 700);
                     gameEnd = true;
                 } else if (pts.p <= 0 && verify) {
+                    rules.innerHTML = '';
                     revealAllSquares();
                     setTimeout(() => {
-                        soundWin();
+                        myFunctions.soundEfects.soundWin();
                     }, 700);
                     myFunctions.showMessage(`Não foi dessa vez ${playerName}, você perdeu!`);
                     gameEnd = true;
-                } 
-    
+                }
+
                 if (pts.p > highest) {
                     highest = pts.p;
                     highestScore.innerHTML = highest;
@@ -427,20 +465,22 @@ btnConfirm.addEventListener('click', () => {
         });
         
     };
-    
     initializeGame();
     
+    createRules();
     const imgRestart = document.querySelector('.imgRestart');
     
-    restart.addEventListener('click', () => {
+    imgRestart.addEventListener('click', () => {
+        
         imgRestart.classList.add("rotate");
         gameBody.innerHTML = '';
         pointuation.innerHTML = 100;
         moves.innerHTML = 0;
         contadorBombs.innerHTML = 0;
-    
+        
         myFunctions.removeMsg();
         initializeGame();
+        btnConfirm.click();
     
         setTimeout(() => {
             imgRestart.classList.remove("rotate");
@@ -455,6 +495,7 @@ document.querySelector(".divImgArrow").addEventListener('click', () => {
     const imgArrow = document.querySelector(".imgArrow");
     imgArrow.classList.toggle('rotateMenuL');
     imgArrow.classList.toggle('rotateMenuR');
+    myFunctions.soundEfects.soundMenu();
     document.querySelector(".sideMenu").classList.toggle('showMenu');
     main.classList.remove('sideMenu');
 });
@@ -470,7 +511,6 @@ main.addEventListener('click', (event) => {
         main.classList.add('closeHidden');
     }
 });
-
 
 document.querySelector('.reset').addEventListener('click', () => {
     const confirmation = confirm('Você tem certeza que deseja resetar seu progresso?');
