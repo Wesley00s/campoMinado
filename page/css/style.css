@@ -46,7 +46,10 @@ header {
     max-width: 40rem;
     min-width: 20rem;
     margin: 0.9rem auto;
+}
 
+.visibility{
+    visibility: hidden;
 }
 
 .shake{
@@ -383,6 +386,7 @@ header {
 
 .hiddenTitle{
     display: flex;
+    text-align: center;
     flex-wrap: wrap;
     padding: 1vw;
     margin: auto;
@@ -394,7 +398,26 @@ header {
 }
 
 .namePlayerMenu{
-    margin: 0 1vw 0 1vw;
+    margin: 0 1.2vw 0 1.2vw;
+    animation: moving 2.5s linear infinite;
+}
+
+@keyframes moving {
+    0%{
+        transform: translateY(0);
+    }
+    25%{
+        transform: translateY(-1px);
+    }
+    50%{
+        transform: translateY(-2px);
+    }
+    75%{
+        transform: translateY(-1px);
+    }
+    100%{
+        transform: translateY(0);
+    }
 }
 
 .plevel{
@@ -482,8 +505,7 @@ header {
 
 .opacity{
     opacity: .5;
-        font-size: max(15px, 1.2vw);
-
+    font-size: max(15px, 1.2vw);
     transition: 300ms;
 }
 
@@ -492,4 +514,3 @@ header {
     text-decoration: underline;
     color:#ad5e04;
 }
-

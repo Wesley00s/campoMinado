@@ -68,7 +68,9 @@ myFunctions.show();
 
 settings.addEventListener('click', () => {
     myFunctions.show();
+    gameBody.classList.add('visibility');
     backArrow.addEventListener('click', () => {
+        gameBody.classList.remove('visibility');
         myFunctions.hidden();
     });
 });
@@ -142,7 +144,7 @@ const input = document.querySelectorAll('.inputLevel').forEach(inpt => {
 });
 
 btnConfirm.addEventListener('click', () => {
-        
+        gameBody.classList.remove('visibility');
         gameBody.innerHTML = '';
         pointuation.innerHTML = 100;
         moves.innerHTML = 0;
