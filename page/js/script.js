@@ -107,6 +107,40 @@ totalWins.innerHTML = contWins;
 totalUses.innerHTML = `${succesRate.toFixed(2)}%`;
 
 
+const input = document.querySelectorAll('.inputLevel').forEach(inpt => {
+    inpt.addEventListener('click', () => {
+        if (radioFacil.checked) {
+            document.querySelector('.l1').classList.remove('opacity');
+        } else {
+            document.querySelector('.l1').classList.add('opacity');
+        }
+            
+        if (radioMedio.checked) {
+            document.querySelector('.l2').classList.remove('opacity');
+        } else {
+            document.querySelector('.l2').classList.add('opacity');
+        }
+            
+        if (radioDificil.checked) {
+            document.querySelector('.l3').classList.remove('opacity');
+        } else {
+            document.querySelector('.l3').classList.add('opacity');
+        }
+            
+        if (radioImpossivel.checked) {
+            document.querySelector('.l4').classList.remove('opacity');
+        } else {
+            document.querySelector('.l4').classList.add('opacity');
+        }
+            
+        if (radioLivre.checked) {
+            document.querySelector('.l5').classList.remove('opacity');
+        } else {
+            document.querySelector('.l5').classList.add('opacity');
+        }
+    });
+});
+
 btnConfirm.addEventListener('click', () => {
         
         gameBody.innerHTML = '';
@@ -121,22 +155,27 @@ btnConfirm.addEventListener('click', () => {
     switch (true) {
         case radioFacil.checked:
             n = 25;
+            document.querySelector('.mode').innerHTML = 'Fácil';
             console.log(`Facil selected: ${n}`);
             break;
         case radioMedio.checked:
             n = 35;
+            document.querySelector('.mode').innerHTML = 'Médio';
             console.log(`Medio selected: ${n}`);
             break;
         case radioDificil.checked:
             n = 45;
+            document.querySelector('.mode').innerHTML = 'Difícil';
             console.log(`Dificil selected: ${n}`);
             break;
         case radioImpossivel.checked:
             n = 60;
+            document.querySelector('.mode').innerHTML = 'Impossível';
             console.log(`Impossivel selected: ${n}`);
             break;
         case radioLivre.checked:
             console.log(`Livre selected: ${n}`);
+            document.querySelector('.mode').innerHTML = 'Livre';
             verify = true;
             n = 20;
             break;

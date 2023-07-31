@@ -26,9 +26,14 @@ header {
 }
 .title{
     display: flex;
+    flex-wrap: wrap;
     width: fit-content;
     margin: auto;
     font-size: max(26px, 3vw);
+    text-align: center;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .gameBody{
@@ -386,7 +391,8 @@ header {
 
 .plevel{
     padding: 1rem;
-    font-size: max(15px, 1.2vw);
+    font-size: max(17px, 1.4vw);
+    transition: 300ms;
 }
 
 .confirm{
@@ -464,4 +470,17 @@ header {
     border-radius: 5rem;
     background: #000;
     cursor: pointer;
+}
+
+.opacity{
+    opacity: .5;
+        font-size: max(15px, 1.2vw);
+
+    transition: 300ms;
+}
+
+.mode{
+    margin: 0 1vw 0 1vw;
+    text-decoration: underline;
+    color:#ad5e04;
 }
