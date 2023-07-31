@@ -447,14 +447,13 @@ btnConfirm.addEventListener('click', () => {
     
 });
 
-
 document.querySelector('.namePlayerMenu').innerHTML = player.innerHTML + ',';
 
 document.querySelector(".divImgArrow").addEventListener('click', () => {
     const imgArrow = document.querySelector(".imgArrow");
     imgArrow.classList.toggle('rotateMenuL');
     imgArrow.classList.toggle('rotateMenuR');
-    const sideMenu = document.querySelector(".sideMenu").classList.toggle('showMenu');
+    document.querySelector(".sideMenu").classList.toggle('showMenu');
     main.classList.remove('sideMenu');
 });
 
