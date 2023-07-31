@@ -150,34 +150,49 @@ btnConfirm.addEventListener('click', () => {
     
         myFunctions.removeMsg();
 
+    const mode = document.querySelector('.mode');
+    const obj = document.querySelector('.obj');
+    const nBombs = document.querySelector('.nBombs');
+    const takeLoss = document.querySelector('.takeLoss');
+    
     let n;
     let verify = false;
     switch (true) {
         case radioFacil.checked:
-            n = 25;
-            document.querySelector('.mode').innerHTML = 'Fácil';
-            console.log(`Facil selected: ${n}`);
+            n = 30;
+            mode.innerHTML = 'Fácil';
+            obj.innerHTML = 'Objetivo: 200pts';
+            nBombs.innerHTML = `${n} bombas em campo, isso será fácil para você, ${playerName}!`;
+            takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;           
             break;
         case radioMedio.checked:
-            n = 35;
-            document.querySelector('.mode').innerHTML = 'Médio';
-            console.log(`Medio selected: ${n}`);
+            n = 40;
+            mode.innerHTML = 'Médio';
+            obj.innerHTML = 'Objetivo: 200pts';
+            nBombs.innerHTML = `${n} bombas em campo, é um poco mais desafiador, mas nada que você não dê conta, ${playerName}!`;
+            takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;  
             break;
         case radioDificil.checked:
-            n = 45;
-            document.querySelector('.mode').innerHTML = 'Difícil';
-            console.log(`Dificil selected: ${n}`);
+            n = 50;
+            mode.innerHTML = 'Difícil';
+            obj.innerHTML = 'Objetivo: 200pts';
+            nBombs.innerHTML = `${n} bombas em campo, você terá que ter um pouco mais de cuidado, ${playerName}!`;
+            takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;  
             break;
         case radioImpossivel.checked:
             n = 60;
-            document.querySelector('.mode').innerHTML = 'Impossível';
-            console.log(`Impossivel selected: ${n}`);
+            mode.innerHTML = 'Impossível';
+            obj.innerHTML = 'Objetivo: 200pts';
+            nBombs.innerHTML = `${n} bombas em campo, tente a sorte... você vai precisar, ${playerName}!`;
+            takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;  
             break;
         case radioLivre.checked:
-            console.log(`Livre selected: ${n}`);
-            document.querySelector('.mode').innerHTML = 'Livre';
-            verify = true;
             n = 20;
+            mode.innerHTML = 'Livre';
+            obj.innerHTML = 'Bata seu recorde!';
+            nBombs.innerHTML = `Aqui você não tem limites de pontos, você define seu própio limite, ${playerName}!`;
+            takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;  
+            verify = true;
             break;
         default:
             alert("Por favor selecione uma opção");
@@ -432,16 +447,36 @@ btnConfirm.addEventListener('click', () => {
     
 });
 
+
 document.querySelector('.namePlayerMenu').innerHTML = player.innerHTML + ',';
 
 document.querySelector(".divImgArrow").addEventListener('click', () => {
     const imgArrow = document.querySelector(".imgArrow");
     imgArrow.classList.toggle('rotateMenuL');
     imgArrow.classList.toggle('rotateMenuR');
-    document.querySelector(".sideMenu").classList.toggle('showMenu');
+    const sideMenu = document.querySelector(".sideMenu").classList.toggle('showMenu');
+    main.classList.remove('sideMenu');
 });
 
+main.addEventListener('click', (event) => {
+    const sideMenu = document.querySelector(".sideMenu");
+    const imgArrow = document.querySelector(".imgArrow");
+
+    if (!sideMenu.contains(event.target) && !imgArrow.contains(event.target)) {
+        sideMenu.classList.remove('showMenu');
+        imgArrow.classList.remove('rotateMenuR');
+        imgArrow.classList.add('rotateMenuL');
+        main.classList.add('closeHidden');
+    }
+});
+
+
 document.querySelector('.reset').addEventListener('click', () => {
-    localStorage.clear();
-    location.href = "../../index.html"
+    const confirmation = confirm('Você tem certeza que deseja resetar seu progresso?');
+    if (confirmation) {
+        localStorage.clear();
+        location.href = "../../index.html"
+    } else {
+        alert('Seu progresso foi mantido');
+    }
 });
