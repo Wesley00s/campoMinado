@@ -127,7 +127,6 @@ header {
     padding: 1vw;
     text-align: center;
     font-size: max(12px, 1vw);
-
 }
 
 .revealGame{
@@ -216,7 +215,7 @@ header {
 }
 
 .menuContent{
-    margin: 1.5rem 1rem;
+    margin: 1rem 1rem;
     font-size: 0.9rem;
     width: 13rem;
 }
@@ -233,7 +232,6 @@ header {
     background: #200909;
     text-align: center;
     border-radius: 1vw;
-
 }
 
 .changeName{
@@ -406,7 +404,7 @@ header {
 }
 
 .plevel{
-    padding: .5rem 1rem;
+    padding: .9rem 1rem;
     width: 92%;
     margin: 2px auto;
     align-items: center;
