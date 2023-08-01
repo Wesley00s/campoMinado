@@ -10,17 +10,6 @@ const rules = document.querySelector(".rules");
 const bgMusic = document.querySelector('#bgMusic');
 const play = document.querySelector('.play');
 
-
-const createRules = () => {
-    const p1 = document.createElement('p');
-    const p2 = document.createElement('p');
-    p1.classList.add('obj');
-    p2.classList.add('nBombs');
-
-    rules.appendChild(p1);
-    rules.appendChild(p2);
-};
-
 const settings = document.querySelector(".settings");
 const hiddenMenu = document.querySelector(".hiddenMenu");
 const backArrow = document.querySelector(".backArrow");
@@ -132,10 +121,17 @@ const myFunctions = {
             randomIndices.push(indices.splice(randomIndex, 1)[0]);
         }
         return randomIndices;
-    }
+    },
+    createRules: () => {
+        const p1 = document.createElement('p');
+        const p2 = document.createElement('p');
+        p1.classList.add('obj');
+        p2.classList.add('nBombs');
+
+        rules.appendChild(p1);
+        rules.appendChild(p2);
+    },
 }
-
-
 
 myFunctions.soundEfects.soundBg();
 
@@ -180,7 +176,6 @@ let succesRate = parseInt(localStorage.getItem("use")) || 0;
 
 let maxScore = parseInt(localStorage.getItem("maxScore")) || 0;
 
-
 const rateSuccesCalc = () => {
     let BOMBS = parseInt(localStorage.getItem("totalBombs")) || 0;
     let MOVES = parseInt(localStorage.getItem("totalMove")) || 0;
@@ -203,7 +198,6 @@ totalMove.innerHTML = contAllMoves;
 highestScore.innerHTML = highest;
 totalWins.innerHTML = contWins;
 totalUses.innerHTML = `${succesRate.toFixed(2)}%`;
-
 
 const input = document.querySelectorAll('.inputLevel').forEach(inpt => {
     inpt.addEventListener('click', () => {
@@ -244,14 +238,14 @@ if (performance.navigation.type === 1) {
 }
 
 btnConfirm.addEventListener('click', () => {
-    createRules();
-        gameBody.classList.remove('visibility');
-        gameBody.innerHTML = '';
-        pointuation.innerHTML = 100;
-        moves.innerHTML = 0;
-        contadorBombs.innerHTML = 0;
-    
-        myFunctions.removeMsg();
+    myFunctions.createRules();
+    gameBody.classList.remove('visibility');
+    gameBody.innerHTML = '';
+    pointuation.innerHTML = 100;
+    moves.innerHTML = 0;
+    contadorBombs.innerHTML = 0;
+
+    myFunctions.removeMsg();
 
     const mode = document.querySelector('.mode');
     const obj = document.querySelector('.obj');
@@ -307,7 +301,7 @@ btnConfirm.addEventListener('click', () => {
                             
     const initializeGame = () => {
 
-        createRules();
+        myFunctions.createRules();
         class Points {
             constructor(p) {
                 this.p = p;
@@ -503,9 +497,10 @@ btnConfirm.addEventListener('click', () => {
         });
         
     };
+
     initializeGame();
     
-    createRules();
+    myFunctions.createRules();
     const imgRestart = document.querySelector('.imgRestart');
     
     imgRestart.addEventListener('click', () => {
