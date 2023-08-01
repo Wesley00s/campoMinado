@@ -549,7 +549,7 @@ document.querySelector('.reset').addEventListener('click', () => {
     const confirmation = confirm('Você tem certeza que deseja resetar seu progresso?');
     if (confirmation) {
         localStorage.clear();
-        location.href = "../../index.html"
+        location.href = "../index.html"
     } else {
         alert('Seu progresso atual foi mantido');
     }
