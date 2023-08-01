@@ -349,11 +349,6 @@ header {
     background: #af5c0e;
     cursor: pointer;
     transition: 400ms;
-
-        border-radius: 100%;
-    width: 5vw;
-    max-width: 2.2rem;
-    min-width: 1.4rem;
 }
 
 .backArrow{
@@ -424,7 +419,6 @@ header {
     transition: 300ms;
     box-shadow: 1px 2px 3px rgba(0, 0, 0,4);
     border: #e67b007c solid 1px;
-
 }
 
 .inputLevel{
@@ -485,9 +479,14 @@ header {
 
 .option{
     border-radius: 100%;
+    width: 0.1px;
     margin: auto;
+    width: 5vw;
+    max-width: 2.4rem;
+    min-width: 1.4rem;
     transform: translateY(0.7vw);
     background: #ffffff00;
+    transform: rotate(180deg);
 }
 
 .settings{
@@ -496,10 +495,15 @@ header {
     background: #eb7c14;
     margin: auto;
     width: 5vw;
-    max-width: 2.2rem;
+    max-width: 2.4rem;
     min-width: 1.4rem;
     transition: 400ms;
     border: 1px solid #000;
+}
+
+.shadow{
+    box-shadow: -2px -2px 3px rgba(0, 0, 0, 0.3);
+
 }
 
 .reset{

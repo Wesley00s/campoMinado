@@ -135,6 +135,8 @@ const myFunctions = {
     }
 }
 
+
+
 myFunctions.soundEfects.soundBg();
 
 play.addEventListener('click', () => {
@@ -144,9 +146,23 @@ play.addEventListener('click', () => {
     });
 });
 
-myFunctions.show();
+const hiddenBackArrow = () => {
+    myFunctions.show();
+    backArrow.style.opacity = 0;
+}
+
+hiddenBackArrow();
 
 settings.addEventListener('click', () => {
+    backArrow.style.opacity = 1;
+    backArrow.addEventListener('mouseenter', () => {
+        backArrow.style.opacity = 0.5
+    });
+
+    backArrow.addEventListener('mouseout', () => {
+        backArrow.style.opacity = 1
+    });
+
     myFunctions.show();
     gameBody.classList.add('visibility');
     backArrow.addEventListener('click', () => {
@@ -223,6 +239,10 @@ const input = document.querySelectorAll('.inputLevel').forEach(inpt => {
     });
 });
 
+if (performance.navigation.type === 1) {
+    play.setAttribute('src', 'img/play.png');
+}
+
 btnConfirm.addEventListener('click', () => {
     createRules();
         gameBody.classList.remove('visibility');
@@ -286,6 +306,7 @@ btnConfirm.addEventListener('click', () => {
     settings.classList.remove('rotateMenuL');           
                             
     const initializeGame = () => {
+
         createRules();
         class Points {
             constructor(p) {
@@ -535,6 +556,6 @@ document.querySelector('.reset').addEventListener('click', () => {
         localStorage.clear();
         location.href = "../../index.html"
     } else {
-        alert('Seu progresso foi mantido');
+        alert('Seu progresso atual foi mantido');
     }
 });
