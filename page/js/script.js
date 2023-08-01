@@ -141,7 +141,7 @@ play.addEventListener('click', () => {
     myFunctions.soundEfects.soundBg();
     bgMusic.addEventListener('ended', () => {
         myFunctions.soundEfects.soundBg();
-    }    
+    });
 });
 
 myFunctions.show();
