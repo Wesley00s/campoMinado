@@ -511,10 +511,47 @@ header {
     cursor: pointer;
 }
 
-
-
 .mode{
     margin: 0 1vw 0 1vw;
     text-decoration: underline;
     color:#ad5e04;
+}
+
+.media{
+    display: flex;
+    padding: .4vw;
+        width: 4vw;
+    max-width: 2rem;
+    min-width: 2rem;
+    height: 4vw;
+    max-height: 2rem;
+    min-height: 2rem;
+    position: relative;
+    border-radius: 100rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -30px;
+    right: 90px;
+}
+
+.play{
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 3vw;
+    max-width: 2rem;
+    min-width: 2rem;
+    background:#ad5e04;
+    border-radius: 100%;
+    padding: 7px;
+    box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.5);
+    transition: 300ms;
+}
+
+.play:hover{
+    background:#794102;
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: 300ms;
 }

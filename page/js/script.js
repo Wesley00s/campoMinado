@@ -7,18 +7,18 @@ const player = document.querySelector(".player");
 const changeName = document.querySelector(".changeName");
 const main = document.querySelector(".main");
 const rules = document.querySelector(".rules");
+const bgMusic = document.querySelector('#bgMusic');
+const play = document.querySelector('.play');
+
 
 const createRules = () => {
     const p1 = document.createElement('p');
     const p2 = document.createElement('p');
-    const p3 = document.createElement('p');
     p1.classList.add('obj');
     p2.classList.add('nBombs');
-    p3.classList.add('takeLoss');
 
     rules.appendChild(p1);
     rules.appendChild(p2);
-    rules.appendChild(p3);
 };
 
 const settings = document.querySelector(".settings");
@@ -108,7 +108,20 @@ const myFunctions = {
                 const gameOver = document.querySelector('#gameOver');
                 gameOver.play();
                 gameOver.currentTime = 0;
-            }
+
+            },
+
+            soundBg: () => {
+                if (bgMusic.paused) {
+                    play.setAttribute('src', 'img/pause.png');
+                    bgMusic.play();
+                    bgMusic.volume -= 0.15;
+                    bgMusic.currentTime = 0;
+                } else {
+                    play.setAttribute('src', 'img/play.png');
+                    bgMusic.pause();
+                }
+            },
         },
 
     generateRandom: (total, count) => {
@@ -121,6 +134,12 @@ const myFunctions = {
         return randomIndices;
     }
 }
+
+myFunctions.soundEfects.soundBg();
+
+play.addEventListener('click', () => {
+    myFunctions.soundEfects.soundBg();
+});
 
 myFunctions.show();
 
@@ -226,35 +245,30 @@ btnConfirm.addEventListener('click', () => {
                 mode.innerHTML = 'Fácil';
                 obj.innerHTML = 'Objetivo: 200pts';
                 nBombs.innerHTML = `${n} bombas em campo, isso será fácil para você, ${playerName}!`;
-                takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;           
                 break;
             case radioMedio.checked:
                 n = 40;
                 mode.innerHTML = 'Médio';
                 obj.innerHTML = 'Objetivo: 200pts';
                 nBombs.innerHTML = `${n} bombas em campo, é um poco mais desafiador, mas nada que você não dê conta, ${playerName}!`;
-                takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;  
                 break;
             case radioDificil.checked:
                 n = 50;
                 mode.innerHTML = 'Difícil';
                 obj.innerHTML = 'Objetivo: 200pts';
                 nBombs.innerHTML = `${n} bombas em campo, você terá que ter um pouco mais de cuidado, ${playerName}!`;
-                takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;  
                 break;
             case radioImpossivel.checked:
                 n = 60;
                 mode.innerHTML = 'Impossível';
                 obj.innerHTML = 'Objetivo: 200pts';
                 nBombs.innerHTML = `${n} bombas em campo, tente a sorte... você vai precisar, ${playerName}!`;
-                takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;  
                 break;
             case radioLivre.checked:
                 n = 20;
                 mode.innerHTML = 'Livre';
                 obj.innerHTML = 'Bata seu recorde!';
                 nBombs.innerHTML = `Aqui você não tem limites de pontos, você define seu própio limite, ${playerName}!`;
-                takeLoss.innerHTML = `Cuidado, perde ao chegar a zero!`;  
                 verify = true;
                 break;
             default:
